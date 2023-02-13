@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IGameSlice, IShips} from "../../types";
+import {IGameSlice} from "../../types";
 
 const initialState: IGameSlice = {
 	board: [
@@ -45,7 +45,9 @@ const gameReducer = createSlice({
 	name: 'auth',
 	initialState: initialState,
 	reducers: {
-		setBoard(state, action) { state.board = action.payload },
+		setBoard(state, action) {
+			state.board = action.payload
+		},
 
 		/** Обновление досок массивом клеток */
 		updateUserBoard(state, action) {
@@ -74,8 +76,6 @@ const gameReducer = createSlice({
 		/** Обновление состояния кораблей */
 		setShips(state, action) {
 			state.ships = action.payload
-
-			localStorage.setItem('user-ships', JSON.stringify(state.ships))
 		},
 		setShipsCount(state, action) {
 			state.shipsCount = action.payload

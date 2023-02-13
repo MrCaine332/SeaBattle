@@ -1,5 +1,5 @@
 .finishGameModal {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -17,6 +17,7 @@
   }
 
   .modalBody {
+    max-width: 100%;
     height: 300px;
     background-color: var(--background-primary);
     z-index: 1;

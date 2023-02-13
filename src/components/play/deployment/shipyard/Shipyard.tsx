@@ -4,6 +4,7 @@ import {useAppSelector} from "../../../../app/hooks/redux";
 import Ship from "../../../game/ship/Ship";
 import ShipGhost from "../../../game/ship/ShipGhost";
 import Divider from "../../../ui/divider/Divider";
+import shipDeploymentListeners from "../../../../app/scripts/shipDeploymentListeners";
 
 const Shipyard = () => {
 	const ships = useAppSelector(state => state.game.ships)
@@ -51,6 +52,9 @@ const Shipyard = () => {
 					))
 				}
 			</div>
+			<button className={styles.randomizeButton} onClick={shipDeploymentListeners.randomizePlacement}>
+				Расставить случайно
+			</button>
 		</div>
 	);
 };

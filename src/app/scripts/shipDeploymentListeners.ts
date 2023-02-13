@@ -87,7 +87,7 @@ const onShipMouseUp = (e: any) => {
         }
     }
 
-    updateShipsIntoStore()
+    updateShipsIntoStore(true)
     cleanUp()
 }
 
@@ -193,6 +193,139 @@ const placeShipsOnPageLoaded = (ships: IShips) => {
     store.dispatch(gameActions.setShipsCount(shipCount))
 }
 
+
+/** /////////////////////////////////////////////////////// */
+/** Функция срабатывает при нажатии на кнопку "Расставить случайно" */
+
+
+const validateCells = (boardMatrix: any, cells: any[]) => {
+    let validated = true
+    cells.forEach((cell) => {
+        for (let x = -1; x < 2; x++) {
+            for (let y = -1; y < 2; y++) {
+
+                if (cell.x + x < 10 && cell.x + x >= 0 && cell.y + y < 10 && cell.y + y >= 0) {
+                    if (boardMatrix[Number(cell.y + y)][Number(cell.x + x)] === 2) {
+                        validated = false
+                    }
+                }
+            }
+        }
+    })
+    return validated
+}
+
+const randomizePlacement = () => {
+    const board = document.querySelector('#board')
+    // @ts-ignore
+    const ships = [...document.querySelectorAll('#ship')]
+
+    let boardMatrix = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+
+    let shipsPlaced = 0
+    let loopCount = 0
+
+    while (shipsPlaced < 10 && loopCount < 500) {
+        shipsPlaced = 0
+        const shipsCopy = [...ships]
+
+        boardMatrix = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ]
+        for (let i = 0; i < ships.length; i++) {
+            let thisShipPlaced = false
+            const index = Math.floor(Math.random() * shipsCopy.length)
+            let loopCount = 0
+
+            while (!thisShipPlaced && loopCount < 500) {
+                const currentShip = shipsCopy[index] as HTMLDivElement
+
+                const x = Math.floor(Math.random() * 10)
+                const y = Math.floor(Math.random() * 10)
+
+                const direction = Math.floor(Math.random() * 10) < 5 ? 'h' : 'v'
+                const size = Number(currentShip.dataset.size)
+
+                const cells = [{x: x, y: y}]
+
+                if (direction === 'h' && x + size > 9) {
+                    break
+                }
+                if (direction === 'v' && y + size > 9) {
+                    break
+                }
+
+                for (let j = 1; j < size; j++) {
+                    if (direction === 'h' && x + j < 10) {
+                        cells.push({ x: x + j, y: y })
+                    }
+                    if (direction === 'v' && y + j < 10) {
+                        cells.push({ x: x, y: y + j })
+                    }
+                }
+
+                const result = validateCells(boardMatrix, cells)
+
+                if (result) {
+                    cells.forEach((cell) => {
+                        boardMatrix[cell.y][cell.x] = 2
+                    })
+                    currentShip.dataset.rootCell = x + '_' + y
+                    thisShipPlaced = true
+                    shipsPlaced++
+
+                    board?.appendChild(currentShip)
+
+                    currentShip.style.display = 'block'
+                    currentShip.style.position = 'absolute'
+                    currentShip.style.top = y * 35 + 'px'
+                    currentShip.style.left = x * 35 + 'px'
+                    currentShip.style.pointerEvents = 'all'
+
+                    currentShip.dataset.placed = "true"
+                    currentShip.dataset.direction = direction
+                    if (direction === 'h') {
+                        currentShip.classList.remove('shipRotated')
+                    }
+                    if (direction === 'v') {
+                        currentShip.classList.add('shipRotated')
+                    }
+                }
+
+                loopCount++
+            }
+            shipsCopy.splice(index, 1)
+        }
+        loopCount++
+    }
+
+    if (shipsPlaced < 10) {
+        randomizePlacement()
+    } else {
+        store.dispatch(gameActions.setBoard(boardMatrix))
+        updateShipsIntoStore(false)
+    }
+}
 
 
 
@@ -321,7 +454,7 @@ const rotateSelectedShip = () => {
         }
 
         updateStoreAfterRotation()
-        updateShipsIntoStore()
+        updateShipsIntoStore(true)
     }
 }
 
@@ -546,7 +679,7 @@ const validateShipRotation = () => {
 /** /////////////////////////////////////////////////////// */
 /** Обновление state кораблей */
 
-const updateShipsIntoStore = () => {
+const updateShipsIntoStore = (withLocalStorage?: boolean) => {
     const board = document.querySelector('#board')
     const shipsNodes = board?.querySelectorAll('#ship')
 
@@ -570,6 +703,9 @@ const updateShipsIntoStore = () => {
 
         store.dispatch(gameActions.setShips(shipsData))
         store.dispatch(gameActions.setShipsCount(shipsCount))
+
+        if (withLocalStorage)
+            localStorage.setItem('user-ships', JSON.stringify(shipsData))
     }
 }
 
@@ -672,10 +808,6 @@ const updateStoreWhenShipRemovedFromBoard = () => {
 
 
 
-
-
-
-
 export default {
     onShipMouseDown,
     onShipMouseUp,
@@ -683,4 +815,5 @@ export default {
     onCellMouseEnter,
     onBoardMouseLeave,
     placeShipsOnPageLoaded,
+    randomizePlacement
 }
