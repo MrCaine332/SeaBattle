@@ -1,0 +1,87 @@
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: auto;
+  padding: 10px 0;
+
+  background-image: url("../../resources/test2.jpg");
+  background-size: cover;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+
+  .users {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .battlefieldInner {
+    z-index: 99;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    .background {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      box-shadow: 0 0 12px 12px var(--background-primary) inset;
+      //border-radius: 12px;
+      overflow: hidden;
+
+      background-image: url("../../resources/seeImage.jpg");
+      background-size: cover;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.winLoseModal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .modalBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+  }
+
+  .modalMsg {
+    width: 300px;
+    height: 200px;
+    margin-top: 300px;
+    background-color: var(--background-primary);
+    z-index: 99;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    text-align: center;
+    padding: 12px;
+  }
+}

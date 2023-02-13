@@ -1,0 +1,92 @@
+.authContainer {
+  position: fixed;
+  //position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+
+  background-image: url("../../resources/background.jpg");
+  background-size: cover;
+}
+
+.registration {
+  z-index: 99;
+  background-color: var(--background-primary);
+  width: 300px;
+  margin: auto;
+  box-shadow: var(--box-shadow);
+  border-radius: 16px;
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputs {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  //background-color: lightcoral;
+}
+
+.formControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .pageNumber {
+    font-size: 14px;
+  }
+}
+
+.formNavigateButtons {
+  display: flex;
+  gap: 12px;
+
+  .buttonRotated {
+    rotate: 180deg;
+  }
+}
+
+.registeredModal {
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  width: 300px;
+  height: 80px;
+  padding: 12px;
+  margin-top: 15px;
+
+  border-radius: 12px;
+  background-color: var(--primary-4);
+  opacity: 0;
+
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  font-style: italic;
+
+  display: grid;
+  place-items: center;
+
+  transform-origin: top;
+  transition: all 0.3s ease, opacity 0.1s;
+  transform: translateY(-100px) translateX(-50%) scaleY(0);
+
+  &_enter {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0px) translateX(-50%) scaleY(1);
+  }
+  &_entered {
+    opacity: 1;
+    scale: 1;
+    transform: translateY(0px) translateX(-50%) scaleY(1);
+  }
+}

@@ -1,0 +1,41 @@
+.deploymentBoard {
+  width: fit-content;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border: 1px solid var(--neutral-5);
+
+  .cell {
+    width: 35px;
+    height: 35px;
+    background-color: var(--neutral-7);
+    border: 1px solid var(--neutral-5);
+    opacity: 0.5;
+  }
+}
+
+.shipTemplate {
+  border: 2px solid var(--primary-4);
+  position: absolute;
+  height: 40px;
+
+  display: none;
+  pointer-events: none;
+}
+
+.size1 {
+  width: 35px;
+}
+
+.size2 {
+  width: 70px;
+}
+
+.size3 {
+  width: 105px;
+}
+
+.size4 {
+  width: 140px;
+}

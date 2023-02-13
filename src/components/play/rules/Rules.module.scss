@@ -1,0 +1,21 @@
+.rules {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 50px;
+  margin-top: 50px;
+
+
+  .rulesItem {
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+  }
+
+  .cell {
+    width: 35px;
+    height: 35px;
+    position: relative;
+  }
+}

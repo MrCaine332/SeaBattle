@@ -1,0 +1,76 @@
+.appButton {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: 0.3s;
+
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.appButton_simple {
+  &:hover {
+    color: var(--btn-simple-hover-text);
+  }
+}
+
+.appButton_outlined {
+  border: 2px solid var(--btn-outlined-border);
+  background-color: rgba(220, 220, 220, 0.3);
+  border-radius: 50px;
+  color: var(--text-primary);
+  padding: 10px 20px;
+  justify-content: center;
+
+  svg {
+    fill: var(--text-primary);
+  }
+
+  &:hover {
+    color: var(--btn-outlined-hover-text);
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+
+    svg {
+      fill: var(--btn-outlined-hover-text);
+    }
+  }
+
+  &:disabled {
+    color: var(--btn-outlined-hover-text);
+    background-color: var(--text-primary);
+    border-color: var(--text-primary);
+    opacity: 0.5;
+    cursor: auto;
+
+    svg {
+      fill: var(--btn-outlined-hover-text);
+    }
+  }
+}
+
+.appButton_filled {
+  border: 2px solid var(--primary-1);
+  background-color: var(--primary-1);
+  border-radius: 50px;
+  color: var(--neutral-8);
+  padding: 10px 20px;
+  justify-content: center;
+
+  &:hover {
+    background-color: var(--primary-1-variant);
+    border-color: var(--primary-1-variant);
+  }
+
+  &:disabled {
+    background-color: var(--primary-1-variant);
+    border-color: var(--primary-1-variant);
+    opacity: 0.5;
+    cursor: auto;
+  }
+}

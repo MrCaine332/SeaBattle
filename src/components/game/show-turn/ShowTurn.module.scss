@@ -1,0 +1,51 @@
+.showTurn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .timer {
+    font-size: 26px;
+    color: var(--neutral-4);
+  }
+
+  .turn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .userTurnText {
+      color: var(--primary-4);
+    }
+
+    .opponentTurnText {
+      color: var(--primary-3);
+    }
+
+    .userTurnArrow {
+      svg {
+        fill: var(--primary-4);
+      }
+    }
+
+    .opponentTurnArrow {
+      rotate: 180deg;
+      svg {
+        fill: var(--primary-3);
+      }
+    }
+  }
+
+  .surrenderButton {
+    img {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+    }
+  }
+}

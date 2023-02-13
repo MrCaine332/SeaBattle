@@ -1,0 +1,29 @@
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  background-image: url("../../resources/background.jpg");
+  background-size: cover;
+}
+
+.play {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(220,220,220,0.5);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+.rules {
+  margin-top: 20px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  background-color: var(--background-primary);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  border-radius: 12px;
+}

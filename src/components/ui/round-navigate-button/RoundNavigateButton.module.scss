@@ -1,0 +1,23 @@
+.roundNavigateButton {
+  border: 1px solid var(--accent);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+
+  svg {
+    fill: var(--neutral-4);
+  }
+
+  &:hover {
+    border-color: var(--neutral-5);
+    background-color: var(--accent);
+  }
+
+  &_disabled {
+    pointer-events: none;
+    svg {
+      fill: var(--neutral-5);
+    }
+  }
+}

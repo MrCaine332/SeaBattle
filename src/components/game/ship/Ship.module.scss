@@ -1,0 +1,38 @@
+.ship {
+  width: fit-content;
+  height: 35px;
+
+  z-index: 99;
+  position: relative;
+  transform-origin: 17px 17px;
+
+  touch-action: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+}
+
+.size1 {
+  width: 35px;
+}
+
+.size2 {
+  width: 70px;
+}
+
+.size3 {
+  width: 105px;
+}
+
+.size4 {
+  width: 140px;
+}
+
+.shipGhost {
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+}

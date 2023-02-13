@@ -1,0 +1,33 @@
+.board {
+  width: fit-content;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border: 1px solid var(--neutral-6);
+  box-shadow: var(--box-shadow);
+
+  .cell {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(55, 114, 255, 0.3);
+    border: 1px solid var(--neutral-6);
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .opponentCell {
+    cursor: pointer;
+    &:hover {
+      background-color: var(--neutral-5);
+    }
+  }
+
+}
+.dot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--primary-4);
+  border-radius: 50%;
+}

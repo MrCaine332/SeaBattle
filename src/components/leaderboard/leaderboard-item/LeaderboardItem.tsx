@@ -1,0 +1,81 @@
+import React from 'react';
+import styles from './LeaderboardItem.module.scss'
+import Divider from "../../ui/divider/Divider";
+import avatar11 from '../../../resources/avatar11.jpg'
+import iconFirstPlace from '../../../resources/icons/iconFirstPlace.png'
+import iconSecondPlace from '../../../resources/icons/iconSecondPlace.png'
+import iconThirdPlace from '../../../resources/icons/iconThirdPlace.png'
+import Avatar from "../../ui/avatar/Avatar";
+
+interface ILeaderboardItem {
+	place: number
+	name: string
+	site: string
+	total: number
+	wins: number
+	loses: number
+	avatarName: string
+}
+
+const LeaderboardItem: React.FC<ILeaderboardItem> =
+	({ place, name, site, avatarName, wins, loses, total }) => {
+	return (
+		<div className={styles.leaderboardItem}>
+			{ (place === 1 || place === 2 || place === 3)
+				? <div className={styles.place}>
+					<img src={place === 1 ? iconFirstPlace
+						: place === 2 ? iconSecondPlace
+							: place === 3 ? iconThirdPlace : ''} alt={''} />
+				</div>
+				: null}
+			{ (place !== 1 && place !== 2 && place !== 3)
+				? <div className={styles.place}>
+					<div className={styles.prize}>
+						{place}
+					</div>
+				</div>
+				: null
+			}
+
+			<Divider direction={"vertical"} />
+			<div className={styles.user}>
+				<div className={styles.avatar}>
+					<Avatar avatarName={avatarName} />
+				</div>
+				<div className={styles.text + ' ' + styles.name}>
+					<p>
+						{ name }
+					</p>
+				</div>
+			</div>
+			<Divider direction={"vertical"} />
+			<div className={styles.text + ' ' + styles.site}>
+				<p>
+					{ site }
+				</p>
+			</div>
+			<Divider direction={"vertical"} />
+			<div className={styles.stats}>
+				<div className={styles.text + ' ' + styles.total}>
+					<p>
+						Всего игр: { total }
+					</p>
+				</div>
+				<Divider direction={"vertical"} />
+				<div className={styles.text + ' ' + styles.win}>
+					<p>
+						Побед: { wins }
+					</p>
+				</div>
+				<Divider direction={"vertical"} />
+				<div className={styles.text + ' ' + styles.lose}>
+					<p>
+						Поражений: { loses }
+					</p>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+export default LeaderboardItem;

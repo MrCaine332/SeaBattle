@@ -1,0 +1,45 @@
+.hit {
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(239, 70, 111, 0.3);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    fill: var(--primary-3);
+  }
+
+  .animationBoom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation-name: animateBoom;
+    animation-duration: 1s;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@keyframes animateBoom {
+  0%   { }
+  11%  { background-image: url("../../../../resources/animationBoom/boom1.png") }
+  22%  { background-image: url("../../../../resources/animationBoom/boom2.png") }
+  33%  { background-image: url("../../../../resources/animationBoom/boom3.png") }
+  44%  { background-image: url("../../../../resources/animationBoom/boom4.png") }
+  55%  { background-image: url("../../../../resources/animationBoom/boom5.png") }
+  66%  { background-image: url("../../../../resources/animationBoom/boom6.png") }
+  77%  { background-image: url("../../../../resources/animationBoom/boom7.png") }
+  88%  { background-image: url("../../../../resources/animationBoom/boom8.png") }
+  99%  { background-image: url("../../../../resources/animationBoom/boom9.png") }
+}

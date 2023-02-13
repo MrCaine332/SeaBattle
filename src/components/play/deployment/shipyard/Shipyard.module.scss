@@ -1,0 +1,12 @@
+.shipyard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 260px;
+
+  .shipType {
+    display: flex;
+    gap: 24px;
+    height: 35px;
+  }
+}

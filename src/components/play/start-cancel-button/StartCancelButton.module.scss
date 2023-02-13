@@ -1,0 +1,50 @@
+.playButtonWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-grow: 1;
+  height: available;
+  margin-top: -50px;
+
+  .playCancelButton {
+    width: fit-content;
+    font-size: 20px;
+    padding: 16px 26px;
+    //margin-top: -50px;
+
+    img {
+      margin-left: 10px;
+      width: 35px;
+      height: 35px;
+      transition: 0.3s;
+    }
+
+    &:hover {
+      .shipIcon {
+        rotate: -30deg;
+        animation-delay: 0.2s;
+        animation-name: animateShip;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+
+  .error {
+    color: var(--primary-3);
+    font-weight: 700;
+    font-style: italic;
+  }
+}
+
+@keyframes animateShip {
+  0%   {}
+  10%  {rotate: -30deg}
+  25%  {transform: translateY(-5px)}
+  50%  {rotate: 30deg}
+  75%  {transform: translateY(5px)}
+  90%  {rotate: -30deg;transform: translateY(0)}
+  100% {rotate: -30deg}
+}
