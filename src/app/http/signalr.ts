@@ -9,7 +9,7 @@ export const connect = async () => {
 	try {
 		const userId = localStorage.getItem('user-id')
 		connection = new HubConnectionBuilder()
-			.withUrl('https://localhost:7035/game?userId=' + userId)
+			.withUrl('http://45.8.248.191/game?userId=' + userId)
 			.withAutomaticReconnect()
 			.build()
 
@@ -24,6 +24,7 @@ export const connect = async () => {
 const defineDefaultSubscriptions = (connection: HubConnection) => {
 	connection.on('Connected', () => {
 		store.dispatch(connectionActions.setConnected(true))
+		console.log('connected')
 	})
 
 	connection.onclose(() => {

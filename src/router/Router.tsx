@@ -11,6 +11,7 @@ import Account from "../pages/account/Account";
 
 const Router = () => {
 	const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated)
+	// const isAuthenticated = true
 	const didBattleStarted = useAppSelector(state => state.game.didBattleStarted)
 
 	return (
