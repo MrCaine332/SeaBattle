@@ -1,6 +1,6 @@
 import axios, {InternalAxiosRequestConfig} from 'axios';
 
-export const API_URL = `https://localhost:7035`
+export const API_URL = `https://localhost:5001`
 
 const $api = axios.create({
     withCredentials: true,

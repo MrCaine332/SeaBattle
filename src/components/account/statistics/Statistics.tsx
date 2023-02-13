@@ -9,10 +9,15 @@ interface IGame {
 	won: boolean
 }
 
+interface IUserStats {
+	totalCount: number
+	winCount: number
+}
+
 const Statistics = () => {
 
 	const [lastGames, setLastGames] = useState<IGame[]>([])
-	const [usersGames, setUsersGames] = useState<IGame[]>([])
+	const [usersGames, setUsersGames] = useState<IUserStats>({totalCount: 0, winCount: 0})
 
 	const getLastGames = async () => {
 		const userId = localStorage.getItem('user-id')
@@ -25,7 +30,7 @@ const Statistics = () => {
 	const getUsersGames = async () => {
 		const userId = localStorage.getItem('user-id')
 		const response = await $api
-			.get(`/gameresults/lastgames?userId=${userId}&count=4` )
+			.get(`/gameresults/userstat?userId=${userId}` )
 		if (response.data)
 			setUsersGames(response.data)
 	}
@@ -40,9 +45,9 @@ const Statistics = () => {
 			<h2>Статистика</h2>
 			<Divider />
 			<div className={styles.stats}>
-				<p>Игр всего сыграно: 5000</p>
-				<p>Побед: 3000</p>
-				<p>Поражений: 2000</p>
+				<p>Игр всего сыграно: {usersGames.totalCount}</p>
+				<p>Побед: {usersGames.winCount}</p>
+				<p>Поражений: {usersGames.totalCount - usersGames.winCount}</p>
 			</div>
 			<Divider />
 			<h3>Последние игры</h3>
