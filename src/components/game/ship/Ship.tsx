@@ -8,17 +8,32 @@ import ship1 from '../../../resources/ships/ship1.png'
 
 interface IShip {
 	size: number
+	placed: boolean
+	direction: string
+	rootX: number
+	rootY: number
 	style?: React.CSSProperties
 	className?: string
 }
 
-const Ship: React.FC<IShip> = ({ size, style, className }) => {
+const Ship: React.FC<IShip> = (
+	{
+		size,
+		placed,
+		direction,
+		rootX,
+		rootY,
+		style,
+		className
+	}) => {
 
 	return (
 		<div className={[styles.ship, styles['size' + size], className].join(' ')}
 		     data-size={size}
-		     data-placed={false}
-		     data-direction={'h'}
+		     data-placed={placed}
+		     data-direction={direction}
+		     data-root-x={rootX}
+		     data-root-y={rootY}
 		     id={'ship'}
 		     style={style}
 		     onMouseDown={shipDeployment.onShipMouseDown}

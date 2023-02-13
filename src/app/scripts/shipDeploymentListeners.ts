@@ -58,11 +58,13 @@ const onShipMouseDown = (e: any) => {
 
             /** Логика, если корабль уже на доске */
             if (selectedShip.dataset.placed === "true")
-                ifShipIsPlaced()
+                console.log('1')
+                // ifShipIsPlaced()
 
             /** Логика, если корабль еще не на доске */
             if (selectedShip.dataset.placed === "false")
                 ifShipIsNotPlaced()
+
         }
     }
 }
@@ -81,13 +83,13 @@ const onShipMouseUp = (e: any) => {
     if (aboveCell && isShipAllowedToPlace) {
         if (shipTemplate?.style.display === 'block') {
             placeSelectedShip(e)
-            updateStoreWhenShipIsPlaced(e)
+            // updateStoreWhenShipIsPlaced(e)
         } else {
             setSelectedShipUnplaced()
         }
     }
 
-    updateShipsIntoStore()
+    // updateShipsIntoStore()
     cleanUp()
 }
 
@@ -273,36 +275,60 @@ const setSelectedShipUnplaced = () => {
         selectedShip.style.left = ''
         selectedShip.style.top = ''
         selectedShip.style.pointerEvents = 'all'
-        selectedShip.style.width = ''
-        selectedShip.style.height = ''
 
-        selectedShip.dataset.placed = "false"
-        selectedShip.dataset.direction = "h"
-        selectedShip.classList.remove('shipRotated')
+        // selectedShip.dataset.placed = "false"
+        // selectedShip.dataset.direction = "h"
+        // selectedShip.classList.remove('shipRotated')
     }
 }
 
 const placeSelectedShip = (e: any) => {
-    const offsetTop = e.target.offsetTop
-        - (selectedShipDirection === 'v' ? selectedShipCellIndex * 35 : 0)
-    const offsetLeft = e.target.offsetLeft
-        - (selectedShipDirection === 'h' ? selectedShipCellIndex * 35 : 0)
+    const cellX = Number(e.target.dataset.x) || 0
+    const cellY = Number(e.target.dataset.y) || 0
+
+    const rootCell: IBoardCell = {
+        x: selectedShipDirection === 'h' ? cellX - selectedShipCellIndex : cellX,
+        y: selectedShipDirection === 'v' ? cellY - selectedShipCellIndex : cellY,
+        status: CellStatus.Alive
+    }
+
+    const filledCells = getChangedCells(rootCell, 'fill')
+    filledCells.push(rootCell)
+
+    store.dispatch(gameActions.updateUserBoard(filledCells))
+
+    store.dispatch(gameActions.placeShip({
+        type: 'Type' + selectedShipSize,
+        ship: {
+            x: rootCell.x,
+            y: rootCell.y,
+            placed: true
+        }
+    }))
 
     if (shipTemplate)
         shipTemplate.style.display = 'none'
 
-    const board = document.querySelector('#board')
-
-    board?.appendChild(selectedShip!)
-
-    if (selectedShip) {
-        selectedShip.style.display = 'block'
-        selectedShip.style.top = offsetTop + 'px'
-        selectedShip.style.left = offsetLeft + 'px'
-        selectedShip.style.pointerEvents = 'all'
-
-        selectedShip.dataset.placed = "true"
-    }
+    // const offsetTop = e.target.offsetTop
+    //     - (selectedShipDirection === 'v' ? selectedShipCellIndex * 35 : 0)
+    // const offsetLeft = e.target.offsetLeft
+    //     - (selectedShipDirection === 'h' ? selectedShipCellIndex * 35 : 0)
+    //
+    // if (shipTemplate)
+    //     shipTemplate.style.display = 'none'
+    //
+    // const board = document.querySelector('#board')
+    //
+    // board?.appendChild(selectedShip!)
+    //
+    // if (selectedShip) {
+    //     selectedShip.style.display = 'block'
+    //     selectedShip.style.top = offsetTop + 'px'
+    //     selectedShip.style.left = offsetLeft + 'px'
+    //     selectedShip.style.pointerEvents = 'all'
+    //
+    //     selectedShip.dataset.placed = "true"
+    // }
 }
 
 /** /////////////////////////////////////////////////////// */

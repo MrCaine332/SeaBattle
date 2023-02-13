@@ -11,18 +11,18 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
 
 	const dispatch = useAppDispatch()
 
-	useEffect(() => {
-		const boardFromLocalStorage = localStorage.getItem('user-board') || null
-		if (boardFromLocalStorage) {
-			dispatch(gameActions.setBoard(JSON.parse(boardFromLocalStorage)))
-			dispatch(gameActions.resetUserBoard())
-		}
-
-		const shipsFromLocalStorage = localStorage.getItem('user-ships') || null
-		if (shipsFromLocalStorage) {
-			dispatch(gameActions.setShips(JSON.parse(shipsFromLocalStorage)))
-		}
-	}, [])
+	// useEffect(() => {
+	// 	const boardFromLocalStorage = localStorage.getItem('user-board') || null
+	// 	if (boardFromLocalStorage) {
+	// 		dispatch(gameActions.setBoard(JSON.parse(boardFromLocalStorage)))
+	// 		dispatch(gameActions.resetUserBoard())
+	// 	}
+	//
+	// 	const shipsFromLocalStorage = localStorage.getItem('user-ships') || null
+	// 	if (shipsFromLocalStorage) {
+	// 		dispatch(gameActions.setShips(JSON.parse(shipsFromLocalStorage)))
+	// 	}
+	// }, [])
 
 	return (
 		<SetupConnection>

@@ -81,6 +81,8 @@ export enum CellStatus {
 export interface IShip {
 	x: number
 	y: number
+	size: number
+	placed: boolean
 	direction: string
 }
 

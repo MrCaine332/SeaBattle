@@ -1,5 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {IGameSlice, IShips} from "../../types";
+import {IGameSlice, IShip, IShips} from "../../types";
+import {RootState} from "../store";
+
 
 const initialState: IGameSlice = {
 	board: [
@@ -28,10 +30,24 @@ const initialState: IGameSlice = {
 	],
 	thisUserTurn: false,
 	ships: {
-		Type4: [],
-		Type3: [],
-		Type2: [],
-		Type1: []
+		Type4: [
+			{x: -1, y: -1, placed: false, direction: 'h', size: 4},
+		],
+		Type3: [
+			{x: -1, y: -1, placed: false, direction: 'h', size: 3},
+			{x: -1, y: -1, placed: false, direction: 'h', size: 3},
+		],
+		Type2: [
+			{x: -1, y: -1, placed: false, direction: 'h', size: 2},
+			{x: -1, y: -1, placed: false, direction: 'h', size: 2},
+			{x: -1, y: -1, placed: false, direction: 'h', size: 2},
+		],
+		Type1: [
+			{x: -1, y: -1, placed: false, direction: 'h', size: 1},
+			{x: -1, y: -1, placed: false, direction: 'h', size: 1},
+			{x: -1, y: -1, placed: false, direction: 'h', size: 1},
+			{x: -1, y: -1, placed: false, direction: 'h', size: 1},
+		]
 	},
 	shipsCount: 0,
 	didBattleStarted: false,
@@ -77,9 +93,25 @@ const gameReducer = createSlice({
 
 			localStorage.setItem('user-ships', JSON.stringify(state.ships))
 		},
+		placeShip(state, action) {
+			const indexOfUnplacedShip = state.ships[action.payload.type as keyof IShips]
+				.findIndex((ship: IShip, index: number) => {
+					return (ship.x === -1 && ship.y === -1)
+				})
+
+			state.ships[action.payload.type as keyof IShips][indexOfUnplacedShip] =
+				{...state.ships[action.payload.type as keyof IShips][indexOfUnplacedShip], ...action.payload.ship}
+		},
+		updateShip(state, action) {
+			// state.ships[action.payload.type]
+		},
+		removeShip(state, action) {
+			// state.ships[action.payload.type]
+		},
 		setShipsCount(state, action) {
 			state.shipsCount = action.payload
 		},
+
 
 		/** Обновление статуса хода игрока */
 		setThisUserTurn(state, action) {

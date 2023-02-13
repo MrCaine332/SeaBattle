@@ -36,66 +36,66 @@ const UserBoard = () => {
 						))
 					})
 				}
-				{
-					ships.Type4.map((ship, index) => (
-						<Ship key={index} size={4}
-						      style={{
-								  width: '160px',
-							      height: '40px',
-								  position: "absolute",
-							      left: 40 * ship.x + 'px',
-							      top: 40 * ship.y + 'px',
-							      transformOrigin: '20px 20px'
-						      }}
-						      className={ship.direction === 'v' ? 'shipRotated' : ''}
-						/>
-					))
-				}
-				{
-					ships.Type3.map((ship, index) => (
-						<Ship key={index} size={3}
-						      style={{
-							      width: '120px',
-							      height: '40px',
-							      position: "absolute",
-							      left: 40 * ship.x + 'px',
-							      top: 40 * ship.y + 'px',
-							      transformOrigin: '20px 20px'
-						      }}
-						      className={ship.direction === 'v' ? 'shipRotated' : ''}
-						/>
-					))
-				}
-				{
-					ships.Type2.map((ship, index) => (
-						<Ship key={index} size={2}
-						      style={{
-							      width: '80px',
-							      height: '40px',
-							      position: "absolute",
-							      left: 40 * ship.x + 'px',
-							      top: 40 * ship.y + 'px',
-							      transformOrigin: '20px 20px'
-						      }}
-						      className={ship.direction === 'v' ? 'shipRotated' : ''}
-						/>
-					))
-				}
-				{
-					ships.Type1.map((ship, index) => (
-						<Ship key={index} size={1}
-						      style={{
-							      width: '40px',
-							      height: '40px',
-							      position: "absolute",
-							      left: 40 * ship.x + 'px',
-							      top: 40 * ship.y + 'px',
-							      transformOrigin: '20px 20px'
-						      }}
-						      className={ship.direction === 'v' ? 'shipRotated' : ''}
-						/>
-					))
-				}
+				{/*{*/}
+				{/*	ships.Type4.map((ship, index) => (*/}
+				{/*		<Ship key={index} size={4}*/}
+				{/*		      style={{*/}
+				{/*				  width: '160px',*/}
+				{/*			      height: '40px',*/}
+				{/*				  position: "absolute",*/}
+				{/*			      left: 40 * ship.x + 'px',*/}
+				{/*			      top: 40 * ship.y + 'px',*/}
+				{/*			      transformOrigin: '20px 20px'*/}
+				{/*		      }}*/}
+				{/*		      className={ship.direction === 'v' ? 'shipRotated' : ''}*/}
+				{/*		/>*/}
+				{/*	))*/}
+				{/*}*/}
+				{/*{*/}
+				{/*	ships.Type3.map((ship, index) => (*/}
+				{/*		<Ship key={index} size={3}*/}
+				{/*		      style={{*/}
+				{/*			      width: '120px',*/}
+				{/*			      height: '40px',*/}
+				{/*			      position: "absolute",*/}
+				{/*			      left: 40 * ship.x + 'px',*/}
+				{/*			      top: 40 * ship.y + 'px',*/}
+				{/*			      transformOrigin: '20px 20px'*/}
+				{/*		      }}*/}
+				{/*		      className={ship.direction === 'v' ? 'shipRotated' : ''}*/}
+				{/*		/>*/}
+				{/*	))*/}
+				{/*}*/}
+				{/*{*/}
+				{/*	ships.Type2.map((ship, index) => (*/}
+				{/*		<Ship key={index} size={2}*/}
+				{/*		      style={{*/}
+				{/*			      width: '80px',*/}
+				{/*			      height: '40px',*/}
+				{/*			      position: "absolute",*/}
+				{/*			      left: 40 * ship.x + 'px',*/}
+				{/*			      top: 40 * ship.y + 'px',*/}
+				{/*			      transformOrigin: '20px 20px'*/}
+				{/*		      }}*/}
+				{/*		      className={ship.direction === 'v' ? 'shipRotated' : ''}*/}
+				{/*		/>*/}
+				{/*	))*/}
+				{/*}*/}
+				{/*{*/}
+				{/*	ships.Type1.map((ship, index) => (*/}
+				{/*		<Ship key={index} size={1}*/}
+				{/*		      style={{*/}
+				{/*			      width: '40px',*/}
+				{/*			      height: '40px',*/}
+				{/*			      position: "absolute",*/}
+				{/*			      left: 40 * ship.x + 'px',*/}
+				{/*			      top: 40 * ship.y + 'px',*/}
+				{/*			      transformOrigin: '20px 20px'*/}
+				{/*		      }}*/}
+				{/*		      className={ship.direction === 'v' ? 'shipRotated' : ''}*/}
+				{/*		/>*/}
+				{/*	))*/}
+				{/*}*/}
 			</div>
 		</div>
 	);

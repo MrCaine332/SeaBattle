@@ -9,7 +9,7 @@ const Deployment = () => {
 	const ships = useAppSelector(state => state.game.ships)
 
 	useEffect(() => {
-		shipDeployment.placeShipsOnPageLoaded(ships)
+		// shipDeployment.placeShipsOnPageLoaded(ships)
 	}, [])
 
 	return (
