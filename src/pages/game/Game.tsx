@@ -75,10 +75,10 @@ const Game = () => {
 
 	useEffect(() => {
 		let timeout: any
-		if (timeLeft !== 30 && gameStarted) {
+		if (timeLeft !== 30) {
 			timeout = setTimeout(() => {
 				dispatch(gameThunks.resetGameState())
-			}, 3000)
+			}, 5000)
 		}
 		return () => {
 			clearTimeout(timeout)
