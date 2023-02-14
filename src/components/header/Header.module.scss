@@ -29,10 +29,24 @@
 
     .navbar {
       display: flex;
+      align-items: center;
       gap: 12px;
       color: var(--neutral-5);
       font-weight: 700;
 
+      select {
+        padding: 2px 8px 2px 4px;
+        background-color: transparent;
+        border-radius: 50px;
+        max-width: 150px;
+        border: 2px solid var(--accent);
+        color: var(--text-neutral);
+      }
+
+      option {
+        color: var(--text-neutral);
+        border: 2px solid var(--accent);
+      }
 
       a {
         text-decoration: none;

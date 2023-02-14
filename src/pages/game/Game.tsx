@@ -55,6 +55,7 @@ const Game = () => {
 			})
 
 			connection.on('GameEnded', (didThisUserWin: boolean) => {
+				setGameStarted(false)
 				setDidUserWon(didThisUserWin)
 			})
 
@@ -72,6 +73,18 @@ const Game = () => {
 		}
 	}, [connection])
 
+	useEffect(() => {
+		let timeout: any
+		if (timeLeft !== 30 && gameStarted) {
+			timeout = setTimeout(() => {
+				dispatch(gameThunks.resetGameState())
+			}, 3000)
+		}
+		return () => {
+			clearTimeout(timeout)
+		}
+	}, [timeLeft, gameStarted])
+
 	const shoot = (row: number, col: number) => {
 		if (connection && turn && gameStarted) {
 			connection.invoke('shoot', row, col)
@@ -85,7 +98,6 @@ const Game = () => {
 	return (
 		<ComponentContainer className={styles.container}>
 			<div className={styles.game}>
-
 				<div className={styles.users}>
 					<UserInfo userType={"player"}
 					          name={user.nickName ? user.nickName : user.firstName + ' ' + user.lastName}

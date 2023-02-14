@@ -195,6 +195,49 @@ const placeShipsOnPageLoaded = (ships: IShips) => {
 
 
 /** /////////////////////////////////////////////////////// */
+/** Сбросить доску и корабли */
+
+
+const resetBoardAndShips = () => {
+    const shipType4 = document.querySelector('#shipType4')
+    const shipType3 = document.querySelector('#shipType3')
+    const shipType2 = document.querySelector('#shipType2')
+    const shipType1 = document.querySelector('#shipType1')
+    // @ts-ignore
+    const ships = [...document.querySelectorAll('#ship')]
+
+
+    for (let ship in ships) {
+
+        ships[ship].style.position = ''
+        ships[ship].style.left = ''
+        ships[ship].style.top = ''
+        ships[ship].style.pointerEvents = 'all'
+        ships[ship].style.width = ''
+        ships[ship].style.height = ''
+
+        ships[ship].dataset.placed = "false"
+        ships[ship].dataset.direction = "h"
+        ships[ship].classList.remove('shipRotated')
+
+        if (Number(ships[ship].dataset.size) === 1) {
+            shipType1?.appendChild(ships[ship])
+        }
+        if (Number(ships[ship].dataset.size) === 2) {
+            shipType2?.appendChild(ships[ship])
+        }
+        if (Number(ships[ship].dataset.size) === 3) {
+            shipType3?.appendChild(ships[ship])
+        }
+        if (Number(ships[ship].dataset.size) === 4) {
+            shipType4?.appendChild(ships[ship])
+        }
+    }
+
+    store.dispatch(gameActions.resetUserData())
+}
+
+/** /////////////////////////////////////////////////////// */
 /** Функция срабатывает при нажатии на кнопку "Расставить случайно" */
 
 
@@ -236,7 +279,7 @@ const randomizePlacement = () => {
     let shipsPlaced = 0
     let loopCount = 0
 
-    while (shipsPlaced < 10 && loopCount < 500) {
+    while (shipsPlaced < 10 && loopCount < 5000) {
         shipsPlaced = 0
         const shipsCopy = [...ships]
 
@@ -320,14 +363,12 @@ const randomizePlacement = () => {
     }
 
     if (shipsPlaced < 10) {
-        randomizePlacement()
+        resetBoardAndShips()
     } else {
         store.dispatch(gameActions.setBoard(boardMatrix))
         updateShipsIntoStore(false)
     }
 }
-
-
 
 
 
@@ -815,5 +856,6 @@ export default {
     onCellMouseEnter,
     onBoardMouseLeave,
     placeShipsOnPageLoaded,
-    randomizePlacement
+    randomizePlacement,
+    resetBoardAndShips
 }

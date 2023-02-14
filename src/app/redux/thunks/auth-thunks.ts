@@ -24,6 +24,7 @@ const logout = () => {
     return async (dispatch: AppDispatch) => {
         try {
             dispatch(authActions.logout())
+            window.location.href = '/login'
             localStorage.removeItem('user-token')
             localStorage.removeItem('user-id')
         } catch (e) {
@@ -68,7 +69,6 @@ const fetchAndSetUser = (userId: number) => {
 
             return true
         } catch (e) {
-            console.log(e)
             dispatch(authThunks.logout())
             return false
         }

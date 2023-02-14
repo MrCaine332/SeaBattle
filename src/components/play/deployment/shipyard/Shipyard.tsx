@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Shipyard.module.scss'
-import {useAppSelector} from "../../../../app/hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../../../app/hooks/redux";
 import Ship from "../../../game/ship/Ship";
 import ShipGhost from "../../../game/ship/ShipGhost";
 import Divider from "../../../ui/divider/Divider";
@@ -52,9 +52,17 @@ const Shipyard = () => {
 					))
 				}
 			</div>
-			<button className={styles.randomizeButton} onClick={shipDeploymentListeners.randomizePlacement}>
-				Расставить случайно
-			</button>
+			<div className={styles.buttons}>
+				<button onClick={shipDeploymentListeners.resetBoardAndShips}>
+					Сбросить всё
+				</button>
+				<button onClick={shipDeploymentListeners.randomizePlacement}>
+					Расставить случайно
+				</button>
+			</div>
+			<div className={styles.hint}>
+				Вы можете повернуть корабль, нажав на него.
+			</div>
 		</div>
 	);
 };

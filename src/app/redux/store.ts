@@ -2,12 +2,14 @@ import {configureStore} from "@reduxjs/toolkit";
 import authReducer from "./slices/auth-slice";
 import gameReducer from "./slices/game-slice";
 import connectionReducer from "./slices/connection-slice";
+import leaderboardReducer from "./slices/leaderboard.slice";
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
         game: gameReducer,
-        connection: connectionReducer
+        connection: connectionReducer,
+        leaderboard: leaderboardReducer
     }
 })
 

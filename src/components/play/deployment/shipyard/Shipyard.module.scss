@@ -12,7 +12,21 @@
 }
 
 
-.randomizeButton {
-  text-decoration: underline;
-  cursor: pointer;
+.buttons {
+  justify-content: center;
+  display: flex;
+  gap: 16px;
+
+  button {
+    font-size: 16px;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+}
+
+.hint {
+  font-size: 14px;
+  white-space: nowrap;
+  color: var(--primary-4);
 }

@@ -117,6 +117,15 @@ const gameReducer = createSlice({
 				name: action.payload.name,
 				avatarName: action.payload.avatarName
 			}
+		},
+
+		resetUserData(state) {
+			state.board = initialState.board
+			state.ships = initialState.ships
+			state.shipsCount = initialState.shipsCount
+
+			localStorage.setItem('user-board', JSON.stringify(state.board))
+			localStorage.setItem('user-ships', JSON.stringify(state.ships))
 		}
 	}
 })

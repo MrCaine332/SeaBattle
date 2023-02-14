@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './LeaderboardItem.module.scss'
 import Divider from "../../ui/divider/Divider";
-import avatar11 from '../../../resources/avatar11.jpg'
 import iconFirstPlace from '../../../resources/icons/iconFirstPlace.png'
 import iconSecondPlace from '../../../resources/icons/iconSecondPlace.png'
 import iconThirdPlace from '../../../resources/icons/iconThirdPlace.png'

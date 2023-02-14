@@ -6,8 +6,8 @@ import LeaderboardItem from "../../components/leaderboard/leaderboard-item/Leade
 import Divider from "../../components/ui/divider/Divider";
 import $api from "../../app/http/api";
 import Loader from "../../components/ui/loader/Loader";
-
-const a = [0, 1, 2, 3, 4, 5, 6, 7]
+import {useAppSelector} from "../../app/hooks/redux";
+import {stat} from "fs";
 
 interface IWinner {
 	userId: number
@@ -23,21 +23,24 @@ interface IWinner {
 
 const Leaderboard = () => {
 
-	const [topWinners, setTopWinners] = useState<IWinner[]>([])
+	const topWinners = useAppSelector(state => state.leaderboard.topWinners)
+	const isLoading = useAppSelector(state => state.leaderboard.isLoading)
 
-	const getGameResults = async () => {
-		try {
-			const results = await $api.get('/GameResults/TopWinners?count=10')
-			if (results.data)
-				setTopWinners(results.data)
-		} catch (e) {
-
-		}
-	}
-
-	useEffect(() => {
-		getGameResults()
-	}, [])
+	// const [topWinners, setTopWinners] = useState<IWinner[]>([])
+	//
+	// const getGameResults = async () => {
+	// 	try {
+	// 		const results = await $api.get('/GameResults/TopWinners?count=10')
+	// 		if (results.data)
+	// 			setTopWinners(results.data)
+	// 	} catch (e) {
+	//
+	// 	}
+	// }
+	//
+	// useEffect(() => {
+	// 	getGameResults()
+	// }, [])
 
 	return (
 		<ComponentContainer className={styles.container}>
@@ -57,7 +60,7 @@ const Leaderboard = () => {
 							/>
 						</React.Fragment>
 					)) }
-					{ topWinners.length === 0
+					{ isLoading
 						? <Loader message={'Загрузка данных'} className={styles.loader} />
 						: null }
 				</div>

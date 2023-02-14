@@ -8,7 +8,6 @@ import Deployment from "../../components/play/deployment/Deployment";
 import StartCancelButton from "../../components/play/start-cancel-button/StartCancelButton";
 import ComponentContainer from "../../components/component-container/ComponentContainer";
 import Header from "../../components/header/Header";
-import Rules from "../../components/play/rules/Rules";
 
 const Play = () => {
 	const dispatch = useAppDispatch()
@@ -21,7 +20,6 @@ const Play = () => {
 			const connection = getConnection()
 			if (connection) {
 				connection.on('StartGame', (thisUserTurn: boolean, opponentName: string, opponentAvatarName: string) => {
-
 					dispatch(gameActions.setOpponent({
 						name: opponentName,
 						avatarName: opponentAvatarName || 'avatar0.jpg'

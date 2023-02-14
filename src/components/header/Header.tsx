@@ -1,14 +1,54 @@
-import React from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import styles from './Header.module.scss'
 import Divider from "../ui/divider/Divider";
-import {NavLink} from "react-router-dom";
-import {useAppSelector} from "../../app/hooks/redux";
+import {NavLink, useLocation} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../app/hooks/redux";
 import ComponentContainer from "../component-container/ComponentContainer";
 import AppLink from "../ui/button-link/app-link/AppLink";
 import Avatar from "../ui/avatar/Avatar";
+import AppButton from "../ui/button-link/app-button/AppButton";
+import authThunks from "../../app/redux/thunks/auth-thunks";
+import $api from "../../app/http/api";
+import {leaderboardActions} from "../../app/redux/slices/leaderboard.slice";
 
 const Header = () => {
 	const user = useAppSelector(state => state.auth.user)
+	const location = useLocation().pathname
+
+	const [sites, setSites] = useState<{ id: number, name: string }[]>([])
+	const [selectedSiteId, setSelectedSiteId] = useState<number>(0)
+
+	const getSites = async () => {
+		const sites = await authThunks.getSites()
+		setSites(sites)
+	}
+
+	useEffect(() => {
+		getSites()
+	}, [])
+
+	const onSiteChange = (e: ChangeEvent<HTMLSelectElement>) => {
+		setSelectedSiteId(Number(e.target.value))
+	}
+
+	const dispatch = useAppDispatch()
+
+	useEffect(() => {
+		getGameResults()
+	}, [selectedSiteId])
+
+	const getGameResults = async () => {
+		try {
+			dispatch(leaderboardActions.setIsLoading(true))
+			const results = await $api.get('/GameResults/TopWinners?count=10&siteId=' + selectedSiteId)
+			if (results.data)
+				dispatch(leaderboardActions.setLeaderboardItems(results.data))
+		} catch (e) {
+
+		} finally {
+			dispatch(leaderboardActions.setIsLoading(false))
+		}
+	}
 
 	return (
 		<ComponentContainer>
@@ -27,6 +67,15 @@ const Header = () => {
 						>
 							Таблица лидеров
 						</NavLink>
+						{ location === '/leaderboard'
+							? <select defaultValue={0} onChange={onSiteChange}>
+								<option value={0}>Все</option>
+								{ sites.map((site, index) => (
+									<option key={index} value={site.id}>{ site.name }</option>
+								) ) }
+							</select>
+							: null
+						}
 					</nav>
 				</div>
 				<div className={styles.headerRight}>

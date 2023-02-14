@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Hit.module.scss'
 import Icons from "../../../ui/icons/Icons";
+import fireSvg from '../../../../resources/icons/fire.svg'
 
 interface IHit {
 	isDestroyed: boolean
@@ -15,7 +16,10 @@ const Hit: React.FC<IHit> = ({ isDestroyed }) => {
 
 	return (
 		<div className={styles.hit} onClick={preventClick}>
-			<Icons name={isDestroyed ? 'fire' : 'close'} size={36} />
+			{ isDestroyed
+				? <img src={fireSvg} alt={''} />
+				: <Icons name={'close'} size={36} />
+			}
 			<div className={styles.animationBoom}></div>
 		</div>
 	);

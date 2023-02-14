@@ -34,7 +34,7 @@
     }
 
     .opponentTurnArrow {
-      rotate: 180deg;
+      transform: rotate(180deg);
       svg {
         fill: var(--primary-3);
       }
