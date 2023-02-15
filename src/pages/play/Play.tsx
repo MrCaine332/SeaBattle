@@ -27,7 +27,7 @@ const Play = () => {
 
 					dispatch(gameActions.setDidBattleStarted(true))
 					dispatch(gameActions.setThisUserTurn(thisUserTurn))
-					navigate('/game')
+					navigate('/battlefield')
 				})
 			}
 		}
