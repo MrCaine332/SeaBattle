@@ -28,7 +28,7 @@ const Router = () => {
                     <Routes>
                         <Route path={'/play'} element={<Play />} />
 	                    { didBattleStarted
-		                    ? <Route path={'/game'} element={<Game />} />
+		                    ? <Route path={'/battlefield'} element={<Game />} />
 		                    : null }
                         <Route path={'/leaderboard'} element={<Leaderboard />} />
                         <Route path={'/account'} element={<Account />} />
