@@ -1,7 +1,6 @@
 import axios, {InternalAxiosRequestConfig} from 'axios';
 
-export const API_URL = `http://45.8.248.191/api`
-// export const API_URL = `http://localhost:5035/api`
+export const API_URL = `http://45.130.42.235/api`
 
 const $api = axios.create({
     withCredentials: true,

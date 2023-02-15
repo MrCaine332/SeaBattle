@@ -1,7 +1,6 @@
-import {HttpTransportType, HubConnection, HubConnectionBuilder} from "@microsoft/signalr";
+import {HubConnection, HubConnectionBuilder} from "@microsoft/signalr";
 import store from "../redux/store";
 import {connectionActions} from "../redux/slices/connection-slice";
-import {gameActions} from "../redux/slices/game-slice";
 
 let connection: HubConnection | null = null
 
@@ -10,7 +9,6 @@ export const connect = async () => {
 		const userId = localStorage.getItem('user-id')
 		connection = new HubConnectionBuilder()
 			.withUrl('http://45.8.248.191/game?userId=' + userId)
-			// .withUrl('http://localhost:5035/game?userId=' + userId)
 			.withAutomaticReconnect()
 			.build()
 
