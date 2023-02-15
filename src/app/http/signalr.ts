@@ -8,7 +8,7 @@ export const connect = async () => {
 	try {
 		const userId = localStorage.getItem('user-id')
 		connection = new HubConnectionBuilder()
-			.withUrl('http://45.130.42.235/game?userId=' + userId)
+			.withUrl('https://game.hobbs-it.ru/game?userId=' + userId)
 			.withAutomaticReconnect()
 			.build()
 
