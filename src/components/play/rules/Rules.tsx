@@ -6,19 +6,19 @@ import Miss from "../../game/shoot-indicators/miss/Miss";
 const Rules = () => {
 	return (
 		<div className={styles.rules}>
-			<div className={styles.rulesItem}>
+			<div className={styles.rulesItem} translate="no">
 				<div className={styles.cell}>
 					<Hit isDestroyed={false} />
 				</div>
 				Попадание
 			</div>
-			<div className={styles.rulesItem}>
+			<div className={styles.rulesItem} translate="no">
 				<div className={styles.cell}>
 					<Miss />
 				</div>
 				Промах
 			</div>
-			<div className={styles.rulesItem}>
+			<div className={styles.rulesItem} translate="no">
 				<div className={styles.cell}>
 					<Hit isDestroyed={true} />
 				</div>

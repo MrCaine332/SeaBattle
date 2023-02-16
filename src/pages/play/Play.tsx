@@ -44,11 +44,11 @@ const Play = () => {
 				<StartCancelButton />
 			</div>
 			<div className={styles.placementRules}>
-				<p>
+				<p translate="no">
 					Вы можете повернуть корабль, нажав на него.
 				</p>
 				<Divider direction={"vertical"} />
-				<p>
+				<p translate="no">
 					Используйте "Расставить случайно" на мобильных устройствах для расстановки ваших кораблей
 				</p>
 			</div>

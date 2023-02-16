@@ -42,22 +42,22 @@ const Statistics = () => {
 
 	return (
 		<div className={styles.statsWrap}>
-			<h2>Статистика</h2>
+			<h2 translate="no">Статистика</h2>
 			<Divider />
 			<div className={styles.stats}>
-				<p>Игр всего сыграно: {usersGames.totalCount}</p>
-				<p>Побед: {usersGames.winCount}</p>
-				<p>Поражений: {usersGames.totalCount - usersGames.winCount}</p>
+				<p translate="no">Игр всего сыграно: {usersGames.totalCount}</p>
+				<p translate="no">Побед: {usersGames.winCount}</p>
+				<p translate="no">Поражений: {usersGames.totalCount - usersGames.winCount}</p>
 			</div>
 			<Divider />
-			<h3>Последние игры</h3>
+			<h3 translate="no">Последние игры</h3>
 			<div className={styles.lastGames}>
 				{ lastGames.map((game, index) => (
 					<div key={index}
 					     className={[styles.game, game.won ? styles.gameWon : styles.gameLost].join(' ')}>
-						<p>{ game.won ? 'Победа' : 'Поражение' }</p>
+						<p translate="no">{ game.won ? 'Победа' : 'Поражение' }</p>
 						<h3>VS</h3>
-						<p className={styles.opponent}>{ game.opponent }</p>
+						<p translate="no" className={styles.opponent}>{ game.opponent }</p>
 					</div>
 				))}
 			</div>

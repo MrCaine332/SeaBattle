@@ -66,13 +66,13 @@ const Credentials: React.FC<IAccountCredentials> = ({ sites }) => {
 	return (
 		<div className={styles.credentials}>
 			<div className={styles.header}>
-				<h2>Персональные данные</h2>
+				<h2 translate="no">Персональные данные</h2>
 				<AppButton style={"outlined"} onClick={onLogout}>Выйти</AppButton>
 			</div>
 			<Divider />
 			<div className={styles.credentialsDetails}>
 				<div className={styles.inputGroup}>
-					<div className={styles.row}>
+					<div className={styles.row} translate="no">
 						<AppInput value={credentials.lastName}
 						          label={'ФАМИЛИЯ'}
 						          placeholder={'Ваша фамилия'}
@@ -91,7 +91,7 @@ const Credentials: React.FC<IAccountCredentials> = ({ sites }) => {
 						          withResetButton
 						/>
 					</div>
-					<div className={styles.row}>
+					<div className={styles.row} translate="no">
 						<AppInput value={credentials.firstName}
 						          label={'ИМЯ'}
 						          placeholder={'Ваше имя'}
@@ -118,7 +118,7 @@ const Credentials: React.FC<IAccountCredentials> = ({ sites }) => {
 				</div>
 			</div>
 			<Divider />
-			<div className={styles.credentialsDetails}>
+			<div className={styles.credentialsDetails} translate="no">
 				<div className={styles.inputGroup}>
 					<div className={styles.row + ' ' + styles.inputGroupBottom}>
 						<AppInput value={credentials.position}
@@ -156,11 +156,11 @@ const Credentials: React.FC<IAccountCredentials> = ({ sites }) => {
 				</div>
 			</div>
 			<Divider />
-			<div className={styles.footer}>
-				<p className={styles.error}>
+			<div className={styles.footer} translate="no">
+				<p className={styles.error} translate="no">
 					{ validationError }
 				</p>
-				<div className={styles.credentialsButtons}>
+				<div className={styles.credentialsButtons} translate="no">
 					<AppButton style={"filled"} onClick={onSave}>Сохранить</AppButton>
 					<AppButton style={"outlined"} onClick={onCancel}>Отменить</AppButton>
 				</div>

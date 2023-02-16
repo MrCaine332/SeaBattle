@@ -42,33 +42,33 @@ const LeaderboardItem: React.FC<ILeaderboardItem> =
 					<Avatar avatarName={avatarName} />
 				</div>
 				<div className={styles.text + ' ' + styles.name}>
-					<p>
+					<p translate="no">
 						{ name }
 					</p>
 				</div>
 			</div>
 			<Divider direction={"vertical"} />
 			<div className={styles.text + ' ' + styles.site}>
-				<p>
+				<p translate="no">
 					{ site }
 				</p>
 			</div>
 			<Divider direction={"vertical"} />
 			<div className={styles.stats}>
 				<div className={styles.text + ' ' + styles.total}>
-					<p>
+					<p translate="no">
 						Всего игр: { total }
 					</p>
 				</div>
 				<Divider direction={"vertical"} />
 				<div className={styles.text + ' ' + styles.win}>
-					<p>
+					<p translate="no">
 						Побед: { wins }
 					</p>
 				</div>
 				<Divider direction={"vertical"} />
 				<div className={styles.text + ' ' + styles.lose}>
-					<p>
+					<p translate="no">
 						Поражений: { loses }
 					</p>
 				</div>

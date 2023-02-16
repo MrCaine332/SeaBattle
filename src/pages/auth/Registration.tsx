@@ -93,7 +93,7 @@ const Registration = () => {
 					</div>
 				</form>
 				<Divider />
-				<p>
+				<p translate="no">
 					У вас уже есть аккаунт? <Link to={'/login'}>Войти!</Link>
 				</p>
 			</div>

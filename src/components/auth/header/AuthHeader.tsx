@@ -10,15 +10,12 @@ const AuthHeader: React.FC<IAuthHeader> = ({ pageTitle }) => {
 	return (
 		<div className={styles.authHeader}>
 			<div className={styles.headerRow}>
-				{/*<div className={styles.logo}>*/}
-
-				{/*</div>*/}
-				<h2>Морской бой</h2>
+				<h2 translate="no">Морской бой</h2>
 			</div>
 			{ pageTitle
 				? <>
 					<Divider />
-					<h3 className={styles.pageTitle}>{ pageTitle }</h3>
+					<h3 translate="no" className={styles.pageTitle}>{ pageTitle }</h3>
 				</>
 				: ''
 			}

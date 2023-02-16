@@ -31,12 +31,12 @@ const FinishGameModal: React.FC<IFinishGameModal> = ({ didUserWon }) => {
 						didUserWon ? styles.textWin : styles.textLose].join(' ')}>
 						{ didUserWon
 							? <>
-								<p>Поздравляем, вы победили!</p>
-								<p>Великолепное сражение, адмирал!</p>
+								<p translate="no">Поздравляем, вы победили!</p>
+								<p translate="no">Великолепное сражение, адмирал!</p>
 							</>
 							:  <>
-								<p>Бой проигран, адмирал.</p>
-								<p>Но следующее сражение будет за Вами!</p>
+								<p translate="no">Бой проигран, адмирал.</p>
+								<p translate="no">Но следующее сражение будет за Вами!</p>
 							</>
 						}
 					</div>

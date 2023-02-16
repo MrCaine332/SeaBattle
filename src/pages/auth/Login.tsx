@@ -47,7 +47,7 @@ const Login = () => {
 			<CSSTransition in={registered} timeout={1000}
 			               classNames={{enter: styles.registeredModal_enter,
 				               enterDone: styles.registeredModal_entered}}>
-				<div className={styles.registeredModal}>
+				<div className={styles.registeredModal} translate="no">
 					Вы успешно зарегестрировались!
 				</div>
 			</CSSTransition>
@@ -83,7 +83,7 @@ const Login = () => {
 					</AppButton>
 				</form>
 				<Divider />
-				<p>
+				<p translate="no">
 					Еще нет аккаунта? <Link to={'/registration'}>Создайте сейчас!</Link>
 				</p>
 			</div>

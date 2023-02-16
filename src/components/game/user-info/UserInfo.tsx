@@ -26,7 +26,7 @@ const UserInfo: React.FC<IUserInfo> = memo(({ userType = 'player', name, avatarN
 				: null }
 			<div className={[styles.name,
 				userType === 'player' ? styles.name_player : '',
-				userType === 'opponent' ? styles.name_opponent : ''].join(' ')}>
+				userType === 'opponent' ? styles.name_opponent : ''].join(' ')} translate="no">
 				{ name }
 			</div>
 			{ userType === 'opponent'

@@ -12,7 +12,7 @@ const Loader: React.FC<ILoader> = ({ className, message }) => {
 			<div className={styles.loader}>
 			</div>
 			{ message
-				? <p>{ message }</p>
+				? <p translate="no">{ message }</p>
 				: null
 			}
 		</div>

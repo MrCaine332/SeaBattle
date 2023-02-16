@@ -48,7 +48,7 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 	return (
 		<div className={styles.playButtonWrap}>
 			{ !isInQueue
-				? <>
+				? <div translate="no">
                     <AppButton style={"filled"}
                                className={styles.playCancelButton}
                                onClick={onReady}
@@ -56,23 +56,23 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
                     >
                         Бороздить моря! <img className={styles.shipIcon} src={iconShip} alt={''} />
                     </AppButton>
-                    <p className={styles.error}>
+                    <p className={styles.error} translate="no">
 						{ shipsCount !== 10 ? 'Не все корабли готовы к отплытию' : null }
                     </p>
-				</> : null
+				</div> : null
 			}
 			{ isInQueue
-				? <>
+				? <div translate="no">
 					<AppButton style={"outlined"}
 					           className={styles.playCancelButton}
 					           onClick={cancelReady}
 					>
 						Вернуться в доки <img src={iconPort} alt={''} />
 					</AppButton>
-					<p className={styles.searching}>
+					<p className={styles.searching} translate="no">
 						Ищем противника <span><Icons name={"loading"} size={18} /></span>
  					</p>
-				</> : null
+				</div> : null
 			}
 			<Rules />
 		</div>

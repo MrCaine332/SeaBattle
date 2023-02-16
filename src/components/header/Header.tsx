@@ -54,21 +54,23 @@ const Header = () => {
 		<ComponentContainer>
 			<div className={styles.header}>
 				<div className={styles.headerLeft}>
-					<h2>Морской бой</h2>
+					<h2 translate="no">Морской бой</h2>
 					<Divider direction={'vertical'} />
 					<nav className={styles.navbar}>
 						<NavLink to={'/play'}
 						         className={({ isActive }) => (isActive ? styles.linkActive : '')}
+						         translate={"no"}
 						>
 							Играть
 						</NavLink>
 						<NavLink to={'/leaderboard'}
 						         className={({ isActive }) => (isActive ? styles.linkActive : '')}
+						         translate="no"
 						>
 							Таблица лидеров
 						</NavLink>
 						{ location === '/leaderboard'
-							? <select defaultValue={0} onChange={onSiteChange}>
+							? <select defaultValue={0} onChange={onSiteChange} translate="no">
 								<option value={0}>Все</option>
 								{ sites.map((site, index) => (
 									<option key={index} value={site.id}>{ site.name }</option>
@@ -80,7 +82,7 @@ const Header = () => {
 				</div>
 				<div className={styles.headerRight}>
 					<AppLink className={styles.user} href={'/account'}>
-						<div>
+						<div translate="no">
 							Йо-хо-хо, <span className={styles.name}>
 							{ user.nickName
 								? user.nickName
