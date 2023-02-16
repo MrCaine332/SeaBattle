@@ -8,6 +8,7 @@ import Deployment from "../../components/play/deployment/Deployment";
 import StartCancelButton from "../../components/play/start-cancel-button/StartCancelButton";
 import ComponentContainer from "../../components/component-container/ComponentContainer";
 import Header from "../../components/header/Header";
+import Divider from "../../components/ui/divider/Divider";
 
 const Play = () => {
 	const dispatch = useAppDispatch()
@@ -39,6 +40,15 @@ const Play = () => {
 			<div className={styles.play}>
 				<Deployment />
 				<StartCancelButton />
+			</div>
+			<div className={styles.placementRules}>
+				<p>
+					Вы можете повернуть корабль, нажав на него.
+				</p>
+				<Divider direction={"vertical"} />
+				<p>
+					Используйте "Расставить случайно" на мобильных устройствах для расстановки ваших кораблей
+				</p>
 			</div>
 		</ComponentContainer>
 	);

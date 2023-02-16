@@ -17,13 +17,15 @@
   box-shadow: var(--box-shadow);
 }
 
-.rules {
+.placementRules {
+  height: 44px;
   margin-top: 20px;
   display: flex;
-  gap: 40px;
+  gap: 20px;
   align-items: center;
   background-color: var(--background-primary);
   box-shadow: var(--box-shadow);
-  padding: 20px;
+  padding: 12px;
   border-radius: 12px;
+  font-size: 14px;
 }

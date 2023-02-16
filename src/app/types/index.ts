@@ -41,7 +41,9 @@ export interface IGameSlice {
 	opponent: {
 		name: string
 		avatarName: string
-	}
+	},
+
+	isInQueue: boolean
 }
 
 

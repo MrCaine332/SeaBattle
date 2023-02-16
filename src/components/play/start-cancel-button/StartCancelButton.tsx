@@ -8,6 +8,8 @@ import {getConnection} from "../../../app/http/signalr";
 import gameThunks from "../../../app/redux/thunks/game-thunks";
 import Rules from "../rules/Rules";
 import Divider from "../../ui/divider/Divider";
+import {gameActions} from "../../../app/redux/slices/game-slice";
+import Icons from "../../ui/icons/Icons";
 
 interface IStartCancelButton {
 
@@ -20,36 +22,37 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 	const board = useAppSelector(state => state.game.board)
 	const shipsCount = useAppSelector(state => state.game.shipsCount)
 	const didBattleStarted = useAppSelector(state => state.game.didBattleStarted)
+	const isInQueue = useAppSelector(state => state.game.isInQueue)
 
-	const [inQueue, setInQueue] = useState<boolean>(false)
+	// const [inQueue, setInQueue] = useState<boolean>(false)
 
 	useEffect(() => {
-		if (shipsCount !== 10 && inQueue) {
-			setInQueue(false)
+		if (shipsCount !== 10 && isInQueue) {
+			cancelReady()
 		}
 	}, [shipsCount])
 
 	const onReady = () => {
 		dispatch(gameThunks.resetGameState())
+		dispatch(gameActions.setIsInQueue(true))
 		if (connection)
 			connection.send('ReadyToStart', board)
-		setInQueue(true)
 	}
 
 	const cancelReady = () => {
 		if (connection)
 			connection.send('NotReady')
-		setInQueue(false)
+		dispatch(gameActions.setIsInQueue(false))
 	}
 
 	return (
 		<div className={styles.playButtonWrap}>
-			{ !inQueue
+			{ !isInQueue
 				? <>
                     <AppButton style={"filled"}
                                className={styles.playCancelButton}
                                onClick={onReady}
-                               disabled={shipsCount !== 10 || inQueue || didBattleStarted}
+                               disabled={shipsCount !== 10 || isInQueue || didBattleStarted}
                     >
                         Бороздить моря! <img className={styles.shipIcon} src={iconShip} alt={''} />
                     </AppButton>
@@ -58,7 +61,7 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
                     </p>
 				</> : null
 			}
-			{ inQueue
+			{ isInQueue
 				? <>
 					<AppButton style={"outlined"}
 					           className={styles.playCancelButton}
@@ -66,9 +69,9 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 					>
 						Вернуться в доки <img src={iconPort} alt={''} />
 					</AppButton>
-					<p className={styles.error}>
-						{ shipsCount !== 10 ? 'Не все корабли готовы к отплытию' : null }
-					</p>
+					<p className={styles.searching}>
+						Ищем противника <span><Icons name={"loading"} size={18} /></span>
+ 					</p>
 				</> : null
 			}
 			<Rules />

@@ -48,8 +48,10 @@ let isShipAllowedToPlace: boolean = true
 const onShipMouseDown = (e: any) => {
     e.preventDefault()
 
+    const isInQueue = store.getState().game.isInQueue
+
     /** Только ЛКМ */
-    if (e.button === 0) {
+    if (e.button === 0 && !isInQueue) {
         selectedShip = e.target
 
         if (selectedShip) {
@@ -259,6 +261,7 @@ const validateCells = (boardMatrix: any, cells: any[]) => {
 }
 
 const randomizePlacement = () => {
+    resetBoardAndShips()
     const board = document.querySelector('#board')
     // @ts-ignore
     const ships = [...document.querySelectorAll('#ship')]

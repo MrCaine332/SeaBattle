@@ -38,7 +38,8 @@ const initialState: IGameSlice = {
 	opponent: {
 		name: '',
 		avatarName: 'avatar0.jpg'
-	}
+	},
+	isInQueue: false
 }
 
 const gameReducer = createSlice({
@@ -126,6 +127,9 @@ const gameReducer = createSlice({
 
 			localStorage.setItem('user-board', JSON.stringify(state.board))
 			localStorage.setItem('user-ships', JSON.stringify(state.ships))
+		},
+		setIsInQueue(state, action) {
+			state.isInQueue = action.payload
 		}
 	}
 })

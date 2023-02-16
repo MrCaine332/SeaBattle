@@ -37,6 +37,18 @@
     font-weight: 700;
     font-style: italic;
   }
+  .searching {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+      animation: animateLoader;
+      animation-duration: 5s;
+      animation-iteration-count: infinite;
+      display: grid;
+      place-items: center;
+    }
+  }
 }
 
 @keyframes animateShip {
@@ -47,4 +59,9 @@
   75%  {transform: translateY(5px)}
   90%  {rotate: -30deg;transform: translateY(0)}
   100% {rotate: -30deg}
+}
+
+@keyframes animateLoader {
+  from {transform: rotate(0deg)}
+  to {transform: rotate(360deg)}
 }

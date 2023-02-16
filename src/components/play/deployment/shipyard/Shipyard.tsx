@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Shipyard.module.scss'
-import {useAppDispatch, useAppSelector} from "../../../../app/hooks/redux";
+import {useAppSelector} from "../../../../app/hooks/redux";
 import Ship from "../../../game/ship/Ship";
 import ShipGhost from "../../../game/ship/ShipGhost";
 import Divider from "../../../ui/divider/Divider";
@@ -8,6 +8,7 @@ import shipDeploymentListeners from "../../../../app/scripts/shipDeploymentListe
 
 const Shipyard = () => {
 	const ships = useAppSelector(state => state.game.ships)
+	const isInQueue = useAppSelector(state => state.game.isInQueue)
 
 	return (
 		<div className={styles.shipyard}>
@@ -52,17 +53,23 @@ const Shipyard = () => {
 					))
 				}
 			</div>
-			<div className={styles.buttons}>
-				<button onClick={shipDeploymentListeners.resetBoardAndShips}>
-					Сбросить всё
-				</button>
-				<button onClick={shipDeploymentListeners.randomizePlacement}>
-					Расставить случайно
-				</button>
-			</div>
-			<div className={styles.hint}>
-				Вы можете повернуть корабль, нажав на него.
-			</div>
+			{
+				!isInQueue
+					? <>
+						<div className={styles.buttons}>
+							<button onClick={shipDeploymentListeners.resetBoardAndShips}>
+								Сбросить всё
+							</button>
+							<button onClick={shipDeploymentListeners.randomizePlacement}>
+								Расставить случайно
+							</button>
+						</div>
+						{/*<div className={styles.hint}>*/}
+						{/*	Вы можете повернуть корабль, нажав на него.*/}
+						{/*</div>*/}
+					</>
+					: null
+			}
 		</div>
 	);
 };
