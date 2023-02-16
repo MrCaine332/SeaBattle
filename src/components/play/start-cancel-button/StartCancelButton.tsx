@@ -24,8 +24,6 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 	const didBattleStarted = useAppSelector(state => state.game.didBattleStarted)
 	const isInQueue = useAppSelector(state => state.game.isInQueue)
 
-	// const [inQueue, setInQueue] = useState<boolean>(false)
-
 	useEffect(() => {
 		if (shipsCount !== 10 && isInQueue) {
 			cancelReady()
@@ -40,10 +38,12 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 	}
 
 	const cancelReady = () => {
-		if (connection)
+		if (connection) {
 			connection.send('NotReady')
+		}
 		dispatch(gameActions.setIsInQueue(false))
 	}
+
 
 	return (
 		<div className={styles.playButtonWrap}>

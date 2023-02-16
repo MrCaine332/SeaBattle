@@ -19,7 +19,8 @@ const Play = () => {
 	useEffect(() => {
 		if (connected) {
 			const connection = getConnection()
-			if (connection) {
+			// @ts-ignore
+			if (connection && !connection._methods.startgame) {
 				connection.on('StartGame', (thisUserTurn: boolean, opponentName: string, opponentAvatarName: string) => {
 					dispatch(gameActions.setOpponent({
 						name: opponentName,
@@ -33,11 +34,11 @@ const Play = () => {
 				})
 			}
 		}
-		return () => {
-			const connection = getConnection()
-			if (connection)
-				connection.off('StartGame')
-		}
+		// return () => {
+		// 	const connection = getConnection()
+		// 	if (connection)
+		// 		connection.off('StartGame')
+		// }
 	}, [])
 
 	return (
