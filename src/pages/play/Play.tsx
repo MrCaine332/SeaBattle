@@ -52,6 +52,11 @@ const Play = () => {
 					Используйте "Расставить случайно" на мобильных устройствах для расстановки ваших кораблей
 				</p>
 			</div>
+			<div className={styles.contact}>
+				<p translate="no">
+					По техническим вопросам обращайтесь в WhatsApp или Telegram по следующему номеру: +7 922 119 23 75
+				</p>
+			</div>
 		</ComponentContainer>
 	);
 };
