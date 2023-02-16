@@ -34,11 +34,6 @@ const Play = () => {
 				})
 			}
 		}
-		// return () => {
-		// 	const connection = getConnection()
-		// 	if (connection)
-		// 		connection.off('StartGame')
-		// }
 	}, [])
 
 	return (
