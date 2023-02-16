@@ -14,8 +14,9 @@ const login = (body: any) => {
             dispatch(authActions.setUserId(data.id))
             await dispatch(fetchAndSetUser(data.id))
             dispatch(authActions.setIsAuthenticated(true))
+            return true
         } catch (e) {
-
+            return false
         }
     }
 }

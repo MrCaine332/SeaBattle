@@ -90,3 +90,9 @@
     transform: translateY(0px) translateX(-50%) scaleY(1);
   }
 }
+
+.error {
+  font-size: 14px;
+  color: var(--primary-3);
+  align-self: center;
+}

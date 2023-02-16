@@ -14,6 +14,7 @@ const Login = () => {
 	const state = useLocation().state
 
 	const [registered, setRegistered] = useState<boolean>(false)
+	const [error, setError] = useState<string>("")
 
 	useEffect(() => {
 		let timeoutId: NodeJS.Timeout | null = null
@@ -38,7 +39,10 @@ const Login = () => {
 	const onSubmit = async (e: FormEvent) => {
 		e.preventDefault()
 		setIsLoading(true)
-		await dispatch(authThunks.login({ email, password }))
+		const response: boolean = await dispatch(authThunks.login({ email, password }))
+		if (!response) {
+			setError('Неправильный E-Mail или пароль')
+		}
 		setIsLoading(false)
 	}
 
@@ -71,10 +75,13 @@ const Login = () => {
 					          placeholder={'Введите пароль'}
 					          onChange={(value) =>
 						          setPassword(value)}
-					          validationFunction={formValidations.validateStringInput}
+					          validationFunction={formValidations.validateSimple}
 					          withResetButton
 					          required
 					/>
+					<p translate={"no"} className={styles.error}>
+						{ error }
+					</p>
 					<AppButton type={"submit"}
 					           style={"filled"}
 					           className={styles.registrationButton}

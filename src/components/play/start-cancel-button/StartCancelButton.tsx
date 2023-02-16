@@ -48,7 +48,7 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 	return (
 		<div className={styles.playButtonWrap}>
 			{ !isInQueue
-				? <div translate="no">
+				? <div translate="no" className={styles.something}>
                     <AppButton style={"filled"}
                                className={styles.playCancelButton}
                                onClick={onReady}
@@ -62,7 +62,7 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 				</div> : null
 			}
 			{ isInQueue
-				? <div translate="no">
+				? <div translate="no" className={styles.something}>
 					<AppButton style={"outlined"}
 					           className={styles.playCancelButton}
 					           onClick={cancelReady}
