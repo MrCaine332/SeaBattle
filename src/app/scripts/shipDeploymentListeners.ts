@@ -748,8 +748,8 @@ const updateShipsIntoStore = (withLocalStorage?: boolean) => {
         store.dispatch(gameActions.setShips(shipsData))
         store.dispatch(gameActions.setShipsCount(shipsCount))
 
-        if (withLocalStorage)
-            localStorage.setItem('user-ships', JSON.stringify(shipsData))
+        // if (withLocalStorage)
+        //     localStorage.setItem('user-ships', JSON.stringify(shipsData))
     }
 }
 

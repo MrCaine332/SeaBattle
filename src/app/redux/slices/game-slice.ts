@@ -56,7 +56,7 @@ const gameReducer = createSlice({
 				state.board[cell.y][cell.x] = cell.status
 			})
 
-			localStorage.setItem('user-board', JSON.stringify(state.board))
+			// localStorage.setItem('user-board', JSON.stringify(state.board))
 		},
 		updateOpponentBoard(state, action) {
 			action.payload.map((cell: any) => {
@@ -108,8 +108,6 @@ const gameReducer = createSlice({
 					}
 				}
 			}
-
-			localStorage.setItem('user-board', JSON.stringify(state.board))
 		},
 
 		/** Обновление данных оппонента */
@@ -125,8 +123,8 @@ const gameReducer = createSlice({
 			state.ships = initialState.ships
 			state.shipsCount = initialState.shipsCount
 
-			localStorage.setItem('user-board', JSON.stringify(state.board))
-			localStorage.setItem('user-ships', JSON.stringify(state.ships))
+			// localStorage.setItem('user-board', JSON.stringify(state.board))
+			// localStorage.setItem('user-ships', JSON.stringify(state.ships))
 		},
 		setIsInQueue(state, action) {
 			state.isInQueue = action.payload
