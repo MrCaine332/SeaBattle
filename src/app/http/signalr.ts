@@ -51,3 +51,6 @@ const defineDefaultSubscriptions = (connection: HubConnection) => {
 export const getConnection = () => {
 	return connection
 }
+
+// @ts-ignore
+window.getConnection = getConnection

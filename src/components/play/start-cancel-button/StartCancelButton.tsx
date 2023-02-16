@@ -33,7 +33,7 @@ const StartCancelButton: React.FC<IStartCancelButton> = () => {
 	}, [shipsCount])
 
 	const onReady = () => {
-		dispatch(gameThunks.resetGameState())
+		dispatch(gameThunks.resetGameStateBeforeSearch())
 		dispatch(gameActions.setIsInQueue(true))
 		if (connection)
 			connection.send('ReadyToStart', board)

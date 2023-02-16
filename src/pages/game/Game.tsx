@@ -64,6 +64,7 @@ const Game = () => {
 			})
 
 			window.addEventListener('beforeunload', () => {
+				dispatch(gameThunks.resetGameStateBeforeSearch())
 				dispatch(gameThunks.resetGameState())
 			})
 

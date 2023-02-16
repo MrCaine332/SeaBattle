@@ -26,11 +26,17 @@ const Play = () => {
 						avatarName: opponentAvatarName || 'avatar0.jpg'
 					}))
 
+					dispatch(gameActions.setIsInQueue(false))
 					dispatch(gameActions.setDidBattleStarted(true))
 					dispatch(gameActions.setThisUserTurn(thisUserTurn))
 					navigate('/battlefield')
 				})
 			}
+		}
+		return () => {
+			const connection = getConnection()
+			if (connection)
+				connection.off('StartGame')
 		}
 	}, [])
 
