@@ -53,4 +53,4 @@ export const getConnection = () => {
 }
 
 // @ts-ignore
-window.getConnection = getConnection
+// window.getConnection = getConnection
