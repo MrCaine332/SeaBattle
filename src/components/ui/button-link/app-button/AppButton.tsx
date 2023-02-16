@@ -57,6 +57,7 @@ const AppButton: React.FC<AppButton> = (
 		        value={value}
 		        onClick={onClick}
 		        // ref={ref}
+		        translate={"no"}
 		>
 			{ children }
 		</button>

@@ -47,6 +47,7 @@ const AppLink: React.FC<AppLink> = (
 					small ? 'button2' : 'button1',
 					styles[`appButton_${style}`], className].join(' ')}
 			     onClick={onClick}
+			     translate={"no"}
 			>
 				{ children }
 			</div>

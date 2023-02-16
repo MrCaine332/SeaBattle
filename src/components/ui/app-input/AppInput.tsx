@@ -89,7 +89,7 @@ const AppInput: React.FC<IAppInput> = (
 
 			<div className={[styles.inputBox,
 				isError ? styles.inputBox_error : '',
-				isSuccess ? styles.inputBox_success : ''].join(' ')}>
+				isSuccess ? styles.inputBox_success : ''].join(' ')} translate={"no"}>
 				<input type={type}
 				       placeholder={placeholder}
 				       name={name}
@@ -99,6 +99,7 @@ const AppInput: React.FC<IAppInput> = (
 				       onBlur={onInputBlur}
 				       required={required}
 				       pattern={pattern}
+				       translate={"no"}
 				/>
 
 				{ (withResetButton && isError)
