@@ -1,8 +1,8 @@
 import axios, {InternalAxiosRequestConfig} from 'axios';
 
-export const API_URL = `https://game.hobbs-it.ru/api`
+// export const API_URL = `https://game.hobbs-it.ru/api`
 // export const API_URL = `http://localhost:5035/api`
-// export const API_URL = `http://80.249.145.107/api`
+export const API_URL = `http://80.249.145.107/api`
 
 
 const $api = axios.create({
