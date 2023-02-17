@@ -1,4 +1,4 @@
-import {HubConnection, HubConnectionBuilder} from "@microsoft/signalr";
+import {HttpTransportType, HubConnection, HubConnectionBuilder} from "@microsoft/signalr";
 import store from "../redux/store";
 import {connectionActions} from "../redux/slices/connection-slice";
 
@@ -8,21 +8,13 @@ export const connect = async () => {
 	try {
 		const userId = localStorage.getItem('user-id')
 		connection = new HubConnectionBuilder()
-			.withUrl('http://80.249.145.107/game?userId=' + userId)
-			// .withUrl('https://game.hobbs-it.ru/game?userId=' + userId)
+			// .withUrl('http://80.249.145.107/game?userId=' + userId)
+			.withUrl('https://game.hobbs-it.ru/game?userId=' + userId)
 			// .withUrl('http://localhost:5035/game?userId=' + userId)
 			.withAutomaticReconnect()
 			.build()
 
 		defineDefaultSubscriptions(connection)
-
-		// const promise = new Promise((resolve, reject) => {
-		// 	setTimeout(() => {
-		// 		resolve('resolved')
-		// 	}, 3000)
-		// })
-		//
-		// await promise
 
 		await connection.start()
 	} catch (e) {
@@ -40,7 +32,6 @@ const defineDefaultSubscriptions = (connection: HubConnection) => {
 	connection.on('Connected', () => {
 		store.dispatch(connectionActions.setConnected(true))
 		console.log('Соединение установлено')
-		console.log(connection.connectionId)
 	})
 
 	connection.onclose(() => {
@@ -64,4 +55,4 @@ export const getConnection = () => {
 }
 
 // @ts-ignore
-window.getConnection = getConnection
+// window.getConnection = getConnection
