@@ -16,13 +16,13 @@ export const connect = async () => {
 
 		defineDefaultSubscriptions(connection)
 
-		const promise = new Promise((resolve, reject) => {
-			setTimeout(() => {
-				resolve('resolved')
-			}, 3000)
-		})
-
-		await promise
+		// const promise = new Promise((resolve, reject) => {
+		// 	setTimeout(() => {
+		// 		resolve('resolved')
+		// 	}, 3000)
+		// })
+		//
+		// await promise
 
 		await connection.start()
 	} catch (e) {
