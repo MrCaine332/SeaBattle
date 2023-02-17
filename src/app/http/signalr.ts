@@ -16,6 +16,14 @@ export const connect = async () => {
 
 		defineDefaultSubscriptions(connection)
 
+		const promise = new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve('resolved')
+			}, 1000)
+		})
+
+		await promise
+
 		await connection.start()
 	} catch (e) {
 		// reconnect()
@@ -32,6 +40,7 @@ const defineDefaultSubscriptions = (connection: HubConnection) => {
 	connection.on('Connected', () => {
 		store.dispatch(connectionActions.setConnected(true))
 		console.log('Соединение установлено')
+		console.log(connection.connectionId)
 	})
 
 	connection.onclose(() => {

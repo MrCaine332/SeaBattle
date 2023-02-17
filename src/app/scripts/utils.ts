@@ -16,7 +16,6 @@ const containsNumber = (str: string) => {
 	return /\d/.test(str);
 }
 
-
 export default {
 	isEmail,
 	isEmptyOrSpaces,
