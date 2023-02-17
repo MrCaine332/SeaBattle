@@ -53,6 +53,11 @@ const Registration = () => {
 		if (typeof validationResult === "string")
 			return setValidationError(validationResult)
 
+		if (credentials.nickname === "") {
+			// @ts-ignore
+			credentials.nickname = null
+		}
+
 		const result = await authThunks.register(credentials)
 		if (typeof result === 'string') {
 			return setValidationError(result)
